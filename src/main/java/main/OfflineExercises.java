@@ -11,20 +11,17 @@ public class OfflineExercises {
 	// multChar("Hi-There") → "HHHiii---TTThhheeerrreee"
 
 	public String multChar(String input) {
-		
-		input = "The";
 		String out = "";
 		int length = input.length();
 		int x = 0;
 		int y = 1;
 		for (int i = 0; i < length; i++) {
 			input.substring(x, y);
-			out =(input.substring(x,y));
-			out =(input.substring(x,y));
-			out =(input.substring(x,y));
+			out = input.substring(x,y) + input.substring(x,y) + input.substring(x,y);
 			x++;
 			y++;
 		}
+		System.out.println(input.substring(x,y));
 		
 		return out;
 	}
@@ -58,9 +55,9 @@ public class OfflineExercises {
 	// evenlySpaced(4, 60, 9) → false
 
 	public boolean evenlySpaced(int a, int b, int c) {
-		a = 2;
-		b = 4;
-		c = 6;
+//		a = 2;
+//		b = 4;
+//		c = 6;
 		
 		Boolean agreed = true;
 		if(a > b && a > c)  {
@@ -182,12 +179,23 @@ public class OfflineExercises {
 	// nMid("Chocolate", 1) → "Choclate"
 
 	public String nMid(String input, int a) {
-		input = "Hello";
-		a = 3;
+
 		int length = input.length();
-		int midpoint = length;
-	
-		return "";
+		int mid = length / 2;
+		String answer = "";
+		if (a == 3) {
+			String start = input.substring(0, mid - 1);
+			String end = input.substring((mid + 1) + 1, length);
+			answer = start + end;
+			System.out.println(start + end);
+		}
+		else if (a == 1) {
+			String start = input.substring(0, mid);
+			String end = input.substring((mid) + 1, length);
+			answer = start + end;
+			System.out.println(answer);
+		}
+		return answer;
 	}
 
 	// Given a string, return true if it ends in "dev". Ignore Case
@@ -200,17 +208,17 @@ public class OfflineExercises {
 
 	public boolean endsDev(String input) {
 		
-		input ="ihatedev";
+//		input ="ihatedev";
 		int s = input.length();
 		boolean dev = false;
-		for (int i = 0; i < input.length(); i++) {
-		String sub = input.substring(s - 3);
-		 if (sub.equals("dev"))
-		 {
-			 dev = true;
-		 }
-		 else dev = false;
-		}
+		if(s > 3) {
+			for (int i = 0; i < input.length(); i++) {
+				String sub = input.substring(s - 3).toLowerCase();
+				if (sub.equals("dev")) {
+					dev = true;
+				} else dev = false;
+			}
+		} else dev = false;
 		return dev;
 	}
 
@@ -236,12 +244,18 @@ public class OfflineExercises {
 	//amISearch("I have been in Amsterdam") → 0
 
 	public int amISearch(String arg1) {
-		arg1 = "I am in Amsterdam am I?";
+//		arg1 = "I am in Amsterdam am I?";
+		String[] split = arg1.split(" ");
+
+		for (String words: split) {
+			System.out.println(words);
+		}
+
 		int counter = 0;
 
 		for (int i = 0; i < arg1.length(); i++) {
 			String sub = arg1.substring(i, i+4).toLowerCase();
-			if (sub.equals(" am ") || sub.equals("am ")|| sub.equals(" am "))
+			if (sub.equals("am") || sub.equals("am ")|| sub.equals(" am "))
 			{
 				
 				counter++;
@@ -263,7 +277,7 @@ public class OfflineExercises {
 	//fizzBuzz(15) → "fizzbuzz"
 	
 	public String fizzBuzz(int arg1) {
-		arg1 = 9;
+
 		
 		String out = "";
 		if (arg1 % 3 == 0 && arg1 % 5 == 0) {
